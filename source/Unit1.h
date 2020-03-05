@@ -25,6 +25,7 @@ __published:	// IDE-managed Components
 	TButton *RemoveButton;
 	TButton *ClearAllButton;
 	TVirtualStringTree *VirtualStringTree1;
+	TLabel *Label1;
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
