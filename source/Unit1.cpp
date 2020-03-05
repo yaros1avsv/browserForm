@@ -54,10 +54,30 @@ void __fastcall TForm1::OpenButtonClick(TObject *Sender)
 	sqlite3_close(DB); // освобождение БД
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::VSTreeGetText(TBaseVirtualTree *Sender, PVirtualNode Node, TColumnIndex Column,
-          TVSTTextType TextType, UnicodeString &CellText)
+
+void __fastcall TForm1::RemoveButtonClick(TObject *Sender)
 {
-    if(!Node) return;
+		if (VSTree->FocusedNode != NULL) // если выбрана хотя бы одна строка
+	{
+		int selectedRowID = ((VSTStruct*)VSTree->GetNodeData(VSTree->FocusedNode))->id;
+		const char *sqlRemoveRow = ("delete from urls where id=" + std::to_string(selectedRowID)).c_str();
+		sqlite3* DB;
+		sqlite3_open("history.sqlite", &DB);
+		char *errorMsg;
+		sqlite3_exec(DB, sqlRemoveRow, NULL, NULL, &errorMsg); // удаление из БД
+		sqlite3_close(DB);
+		VSTree->DeleteSelectedNodes(); // удаление из представления
+	}
+	else
+		LabelStatus->Caption = "Выделите строку для удаления";
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::VSTreeGetText(TBaseVirtualTree *Sender, PVirtualNode Node,
+          TColumnIndex Column, TVSTTextType TextType, UnicodeString &CellText)
+
+{
+	if(!Node) return;
 	VSTStruct *nodeData = (VSTStruct*)Sender->GetNodeData(Node);
 	switch(Column)
 	{
@@ -67,6 +87,5 @@ void __fastcall TForm1::VSTreeGetText(TBaseVirtualTree *Sender, PVirtualNode Nod
 		case 3: CellText = nodeData->visit_count; break;
 	}
 }
-
-
+//---------------------------------------------------------------------------
 

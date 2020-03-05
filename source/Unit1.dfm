@@ -48,6 +48,7 @@ object Form1: TForm1
     Height = 57
     Caption = 'Remove string'
     TabOrder = 1
+    OnClick = RemoveButtonClick
   end
   object ClearAllButton: TButton
     Left = 434
@@ -65,6 +66,7 @@ object Form1: TForm1
     Header.AutoSizeIndex = 0
     TabOrder = 3
     TreeOptions.SelectionOptions = [toFullRowSelect]
+    OnGetText = VSTreeGetText
     Columns = <
       item
         Position = 0

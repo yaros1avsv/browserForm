@@ -29,6 +29,10 @@ __published:	// IDE-managed Components
 	TLabel *NameL;
 	TLabel *LabelStatus;
 	void __fastcall OpenButtonClick(TObject *Sender);
+	void __fastcall RemoveButtonClick(TObject *Sender);
+	void __fastcall VSTreeGetText(TBaseVirtualTree *Sender, PVirtualNode Node, TColumnIndex Column,
+          TVSTTextType TextType, UnicodeString &CellText);
+
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
