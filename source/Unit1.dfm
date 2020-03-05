@@ -64,6 +64,7 @@ object Form1: TForm1
     Height = 266
     Header.AutoSizeIndex = 0
     TabOrder = 3
+    TreeOptions.SelectionOptions = [toFullRowSelect]
     Columns = <
       item
         Position = 0
