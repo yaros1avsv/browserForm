@@ -13,7 +13,7 @@ object Form1: TForm1
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
+  object NameL: TLabel
     Left = 240
     Top = 8
     Width = 163
@@ -26,6 +26,12 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object LabelStatus: TLabel
+    Left = 11
+    Top = 37
+    Width = 3
+    Height = 13
+  end
   object OpenButton: TButton
     Left = 8
     Top = 328
@@ -33,6 +39,7 @@ object Form1: TForm1
     Height = 57
     Caption = 'Open'
     TabOrder = 0
+    OnClick = OpenButtonClick
   end
   object RemoveButton: TButton
     Left = 224
@@ -50,7 +57,7 @@ object Form1: TForm1
     Caption = 'Clear all'
     TabOrder = 2
   end
-  object VirtualStringTree1: TVirtualStringTree
+  object VSTree: TVirtualStringTree
     Left = 8
     Top = 56
     Width = 619
@@ -60,15 +67,19 @@ object Form1: TForm1
     Columns = <
       item
         Position = 0
-        Text = 'Num'
-      end
-      item
-        Position = 1
         Text = 'URL'
       end
       item
+        Position = 1
+        Text = 'Title'
+      end
+      item
         Position = 2
-        Text = 'Time'
+        Text = 'Visited On'
+      end
+      item
+        Position = 3
+        Text = 'Visit Count'
       end>
   end
 end

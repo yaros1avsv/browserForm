@@ -14,7 +14,8 @@ struct VSTStruct
 {
 	int id;
 	UnicodeString url;
-	UnicodeString data;
+	UnicodeString title;
+	int visit_count;
 };
 
 //---------------------------------------------------------------------------
@@ -24,8 +25,10 @@ __published:	// IDE-managed Components
 	TButton *OpenButton;
 	TButton *RemoveButton;
 	TButton *ClearAllButton;
-	TVirtualStringTree *VirtualStringTree1;
-	TLabel *Label1;
+	TVirtualStringTree *VSTree;
+	TLabel *NameL;
+	TLabel *LabelStatus;
+	void __fastcall OpenButtonClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
