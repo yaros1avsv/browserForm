@@ -89,3 +89,22 @@ void __fastcall TForm1::VSTreeGetText(TBaseVirtualTree *Sender, PVirtualNode Nod
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::ClearAllButtonClick(TObject *Sender)
+{
+	sqlite3* DB;
+	sqlite3_open("history.sqlite", &DB);
+	const char *sqlRemoveAll = "delete from urls";
+	char *errorMsg;
+	int result = sqlite3_exec(DB, sqlRemoveAll, NULL, NULL, &errorMsg);
+	sqlite3_close(DB);
+	if (result == SQLITE_OK)
+	{
+		VSTree -> BeginUpdate();
+		VSTree -> Clear();
+		VSTree -> EndUpdate();
+	}
+	else
+	LabelStatus->Caption = "Ошибка выполнения очистки базы";
+}
+//---------------------------------------------------------------------------
+

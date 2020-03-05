@@ -32,6 +32,7 @@ __published:	// IDE-managed Components
 	void __fastcall RemoveButtonClick(TObject *Sender);
 	void __fastcall VSTreeGetText(TBaseVirtualTree *Sender, PVirtualNode Node, TColumnIndex Column,
           TVSTTextType TextType, UnicodeString &CellText);
+	void __fastcall ClearAllButtonClick(TObject *Sender);
 
 private:	// User declarations
 public:		// User declarations

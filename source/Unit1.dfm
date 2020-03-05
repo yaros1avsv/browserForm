@@ -57,6 +57,7 @@ object Form1: TForm1
     Height = 57
     Caption = 'Clear all'
     TabOrder = 2
+    OnClick = ClearAllButtonClick
   end
   object VSTree: TVirtualStringTree
     Left = 8
